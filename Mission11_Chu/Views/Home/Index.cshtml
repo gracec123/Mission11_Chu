@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@* @model IQueryable<Book> *@
+@model BookListViewModel
+
+    <h1>Amazon Book</h1>
+
+
+     @foreach (Book b in Model.Bookslist)
+    {
+        <h3>@b.Title</h3>
+        <ul>
+            <li>Author: @b.Author</li>
+            <li>Publisher: @b.Publisher</li>
+            <li>ISBN: @b.Isbn</li>
+            <li>Classification: @b.Classification</li>
+            <li>Category: @b.Category</li>
+            <li>PageCount: @b.PageCount</li>
+            <li>Price: @b.Price</li>
+        </ul>
+
+    }
+
+<div page-model="Model.PaginationInfo" page-action="Index"></div>
+
+ @*    <a asp-controller="Home" asp-action="Index" asp-route-pageNum="1">1</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-pageNum="2">2</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-pageNum="3">3</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-pageNum="4">4</a> *@
+
