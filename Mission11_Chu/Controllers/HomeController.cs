@@ -5,15 +5,20 @@ using System.Diagnostics;
 
 namespace Mission11_Chu.Controllers
 {
+
+    // Controller for handling home-related actions
     public class HomeController : Controller
     {
         private IBookRepo _context;
 
+        // Constructor to initialize the controller with a repository for books
         public HomeController(IBookRepo temp)
         {
             _context = temp;
         }
 
+        // Action method to handle the index page request
+        // pageNum: current page number for pagination
         public IActionResult Index(int pageNum)
         {
             int pageSize = 10;

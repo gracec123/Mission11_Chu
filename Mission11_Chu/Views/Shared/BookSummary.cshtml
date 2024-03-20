@@ -1,0 +1,23 @@
+﻿@*
+    This partial view is used to render summary information of a book.
+    It displays the book's title, author, publisher, ISBN, classification, page count, and price.
+*@
+@{
+}
+
+@model Book
+
+<div class="card m-1 p-1">
+    <h4>
+        @Model.Title
+        <span class="badge rounded-pill bg-primary text-white float-end"><small>@Model.Category</small> </span>
+    </h4>
+    <ul>
+        <li>Author: @Model.Author</li>
+        <li>Publisher: @Model.Publisher</li>
+        <li>ISBN: @Model.Isbn</li>
+        <li>Classification: @Model.Classification</li>
+        <li>PageCount: @Model.PageCount</li>
+        <li>Price: $@Model.Price</li>
+    </ul>
+</div>

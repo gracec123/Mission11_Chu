@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Mission11_Chu.Models;
 
+// Partial class representing a Book entity
 public partial class Book
 {
     public int BookId { get; set; }

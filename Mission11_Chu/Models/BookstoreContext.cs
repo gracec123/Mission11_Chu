@@ -6,6 +6,7 @@ namespace Mission11_Chu.Models;
 
 public partial class BookstoreContext : DbContext
 {
+    // Represents the database context for the bookstore application
     public BookstoreContext()
     {
     }
@@ -17,9 +18,13 @@ public partial class BookstoreContext : DbContext
 
     public virtual DbSet<Book> Books { get; set; }
 
+    // Method called when configuring the context
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("Data Source=Bookstore.sqlite");
+    {
+        // Configuring the context to use SQLite as the database provider with a connection string
+        // Note: The connection string should ideally be stored outside of the source code for security reasons
+        optionsBuilder.UseSqlite("Data Source=Bookstore.sqlite");
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

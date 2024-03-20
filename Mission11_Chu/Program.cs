@@ -6,12 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Configure the database context with SQLite
 builder.Services.AddDbContext<BookstoreContext>(options =>
 {
     options.UseSqlite(builder.Configuration["ConnectionStrings:BookConnection"]);
 
 });
 
+// Register the EFBookRepo as a scoped service
 builder.Services.AddScoped<IBookRepo, EFBookRepo>();
 
 var app = builder.Build();
@@ -31,8 +33,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Map a custom controller route for pagination
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "pagination", "Books/{pageNum}", new {Controller = "Home", action = "Index"} );
+
+// Map default controller routes
+app.MapDefaultControllerRoute();
 
 app.Run();
